@@ -37,7 +37,7 @@ if image_uploaded is not None:
 
     # Convert the uploaded binary image to an image object, and display it
     cur_image = Image.open(image_uploaded).convert("RGB")
-    st.image(cur_image, caption="Uploaded Image", use_column_width=True)
+    st.image(cur_image, caption="Uploaded Image", use_container_width=True)
 
     # Preprocess the image for the resnet50 model
     input_tensor = transform(cur_image).unsqueeze(0)
@@ -49,4 +49,5 @@ if image_uploaded is not None:
         predicted_label = class_names[pred_index]
         confidence = probabilities[0][pred_index].item()
     
+    predicted_label = predicted_label.capitalize()
     st.info(f"Prediction: {predicted_label} Gelada")
