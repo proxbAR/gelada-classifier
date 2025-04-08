@@ -4,7 +4,7 @@ import torch.nn as nn
 from torchvision import models, transforms
 from PIL import Image
 
-st.title('Gelada Classifier')
+st.title('Gelada Classifier 🐒')
 
 st.info("This is a Gelada classifier Machine Learning application!")
 
