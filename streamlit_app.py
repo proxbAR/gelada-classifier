@@ -14,7 +14,9 @@ image_uploaded = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"]
 @st.cache_resource
 def load_model():
     model = models.resnet50(pretrained=False)
-    model.fc = nn.Linear(model.fc.in_features, 2)
+    model.fc = nn.Sequential(
+        nn.Linear(model.fc.in_features, 2)
+    )
     model.load_state_dict(torch.load("model/gelada_classifier.pth", map_location=torch.device("cpu")))
     model.eval()
     return model
